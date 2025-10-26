@@ -1,143 +1,203 @@
 <!DOCTYPE html>
+<!-- GSAP version: uses CDN; requires internet to load GSAP. Save this file alongside the image file named exactly:
+     WhatsApp Image 2025-10-26 at 16.33.46.jpeg
+Then open this HTML in a browser. -->
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Happy Birthday Maya!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #ffffff;
-      color: #000000;
-      text-align: center;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
+    :root{--lilac:#c8a2c8;--black:#000;--white:#fff}
+    *{box-sizing:border-box}
+    body{
+      font-family:'Poppins',sans-serif;background:var(--white);color:var(--black);margin:0;display:flex;flex-direction:column;align-items:center;min-height:100vh;padding:28px
     }
-    header {
-      background-color: #f4f4f4;
-      padding: 20px;
-      border-bottom: 2px solid #000;
-    }
-    h1 {
-      font-size: 2.8em;
-      color: #000;
-      margin-bottom: 10px;
-    }
-    p.message {
-      font-size: 1.2em;
-      color: #333;
-      margin-bottom: 40px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    img {
-      width: 300px;
-      border-radius: 20px;
-      border: 3px solid #000;
-      box-shadow: 0 0 15px #d8b7e3;
-      margin-top: 20px;
-    }
-    .cat {
-      font-size: 60px;
-      color: #000000;
-      display: inline-block;
-      margin: 10px;
-      position: relative;
-    }
-    .cat::after {
-      content: '🐾';
-      position: absolute;
-      bottom: -10px;
-      left: 15px;
-      font-size: 25px;
-      color: #c8a2c8;
-    }
-    footer {
-      margin-top: 40px;
-      padding: 10px;
-      font-size: 0.9em;
-      color: #333;
-    }
-    .container {
-      padding: 20px;
-    }
-    .card {
-      background: #fff;
-      border-radius: 20px;
-      padding: 30px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-      display: inline-block;
-      max-width: 700px;
-      position: relative;
-    }
-    .cake-icon {
-      font-size: 80px;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-    .cake-icon:hover {
-      transform: scale(1.1);
-    }
-    .hidden-message {
-      display: none;
-      background: #f8f8f8;
-      padding: 20px;
-      border-radius: 15px;
-      margin-top: 20px;
-      font-size: 1.1em;
-      color: #000;
-      animation: fadeIn 1s ease forwards;
-      border: 2px solid #c8a2c8;
-    }
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(10px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
+    .stage{width:100%;max-width:960px}
+    header{width:100%;text-align:center;margin-bottom:10px}
+    h1{font-size:2.2rem;margin:0}
+
+    .card-wrap{perspective:1200px;display:flex;justify-content:center}
+    .card{width:760px;max-width:92%;position:relative;border-radius:14px;background:#fff;border:2px solid rgba(0,0,0,0.06);box-shadow:0 20px 40px rgba(0,0,0,0.08);padding:28px}
+
+    .message{font-size:1rem;color:#222;max-width:640px;margin:0 auto 14px;text-align:center}
+
+    /* inner card 3D envelope */
+    .envelope{width:520px;height:320px;margin:14px auto 8px;position:relative;transform-style:preserve-3d}
+    .env-back{position:absolute;inset:0;background:linear-gradient(180deg,#fff,#faf7ff);border-radius:12px;border:2px solid var(--lilac);box-shadow:inset 0 -8px 30px rgba(200,162,200,0.06);overflow:hidden}
+    .env-front{position:absolute;left:0;top:0;width:100%;height:100%;background:var(--black);border-radius:12px;transform-origin:top center;display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:700}
+    .env-flap{position:absolute;left:0;top:0;width:100%;height:50%;background:linear-gradient(180deg,var(--lilac),#e6d7ff);border-radius:12px 12px 0 0;transform-origin:top center;backface-visibility:hidden}
+
+    /* image inside */
+    .inside-content{position:absolute;left:18px;right:18px;top:40px;bottom:18px;background:#fff;border-radius:8px;padding:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+    .inside-img{width:240px;height:160px;object-fit:cover;border-radius:10px;border:3px solid var(--black);box-shadow:0 8px 24px rgba(200,167,210,0.18)}
+    .inside-text{color:#111;text-align:center}
+
+    /* controls */
+    .controls{display:flex;gap:12px;align-items:center;justify-content:center;margin-top:12px}
+    .btn{background:var(--lilac);color:var(--white);border:0;padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:600}
+
+    /* cats */
+    .cats{display:flex;gap:28px;justify-content:center;margin-top:12px}
+    .cat-btn{background:transparent;border:0;cursor:pointer;font-size:48px;position:relative}
+    .cat-emoji{filter:grayscale(1) sepia(1) hue-rotate(180deg) saturate(30) brightness(10)}
+    .paw-mark{position:absolute;left:50%;transform:translateX(-50%);bottom:-12px;font-size:20px;color:var(--lilac);opacity:0.95}
+
+    /* sparks holder and particle style */
+    .spark-holder{position:absolute;inset:0;pointer-events:none}
+    .particle{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--lilac);box-shadow:0 0 12px var(--lilac);opacity:0}
+
+    /* cake */
+    .cake{font-size:56px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+    .candle{font-size:24px}
+    .flame{font-size:18px;opacity:0;transform:translateY(0)}
+
+    footer{margin-top:18px;text-align:center;color:#666}
+
+    @media(max-width:520px){.envelope{height:260px}.inside-img{width:200px;height:120px}}
   </style>
 </head>
 <body>
-  <header>
-    <h1>🎉 Happy Birthday Maya! 🎂</h1>
-  </header>
-  <div class="container">
-    <div class="card">
-      <p class="message">
-        Maya, happy birthday! 🌸 I hope this year brings you more wisdom, self-love, and endless happiness. <br><br>
-        Today is a special day because a beautiful soul was born into this world. 💜<br><br>
-        You are precious, and we — me and Nesha — love you so much. Keep living, keep smiling, and know that I’m always proud of you. 💫
-      </p>
-      <img src="WhatsApp Image 2025-10-26 at 16.33.46.jpeg" alt="Maya's Picture">
-      <div>
-        <span class="cat">🐱</span>
-        <span class="cat">🐈</span>
-        <span class="cat">😺</span>
-      </div>
-      <div style="margin-top:30px;">
-        <span class="cake-icon" id="cake">🎂</span>
-        <div class="hidden-message" id="birthdayMessage">
-          🎈 Surprise! 🎈<br>
-          Maya, may your day be filled with laughter, love, and cute cats! 😻<br>
-          You deserve all the beautiful things this world has to offer! 💜
+  <div class="stage">
+    <header>
+      <h1>🎉 Happy Birthday Maya!</h1>
+    </header>
+
+    <div class="card-wrap">
+      <div class="card">
+        <p class="message">Maya, happy birthday! I hope this year brings you more self-love, laughter, and little adventures with cute cats. 💜</p>
+
+        <!-- envelope / card -->
+        <div class="envelope" id="envelope">
+          <div class="env-back"></div>
+          <div class="env-front" id="envFront">Click to Open<br><small style="font-weight:400">(or use the button)</small></div>
+          <div class="env-flap" id="envFlap"></div>
+
+          <div class="inside-content" id="inside">
+            <img src="WhatsApp Image 2025-10-26 at 16.33.46.jpeg" alt="Maya" class="inside-img" id="mayaPhoto">
+            <div class="inside-text">
+              <h3 style="margin:6px 0 6px 0">Surprise! 🎈</h3>
+              <p style="margin:0">Maya — may your day be filled with laughter, love and cute cats. You deserve all the beautiful things. — With love, me & Nesha 💜</p>
+            </div>
+          </div>
+
+          <div class="spark-holder" id="sparkHolder"></div>
         </div>
+
+        <div class="cats">
+          <button class="cat-btn" id="cat1" aria-label="cat 1"><span class="cat-emoji">🐱</span><span class="paw-mark">🐾</span></button>
+          <button class="cat-btn" id="cat2" aria-label="cat 2"><span class="cat-emoji">🐈</span><span class="paw-mark">🐾</span></button>
+          <button class="cat-btn" id="cat3" aria-label="cat 3"><span class="cat-emoji">😺</span><span class="paw-mark">🐾</span></button>
+        </div>
+
+        <div class="controls">
+          <div class="cake" id="cakeBtn" title="Toggle candle">
+            <span>🎂</span>
+            <span class="candle">🕯️</span>
+            <span class="flame" id="flame">🔥</span>
+          </div>
+          <button class="btn" id="openBtn">Open Birthday Card</button>
+          <button class="btn" id="resetBtn">Reset</button>
+        </div>
+
       </div>
     </div>
-  </div>
-  <footer>
-    Made with love by your friends 💜
-  </footer>
 
+    <footer>Open this file in a browser. (Make sure the image file is in the same folder.)</footer>
+  </div>
+
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script>
-    const cake = document.getElementById('cake');
-    const message = document.getElementById('birthdayMessage');
-    cake.addEventListener('click', () => {
-      if (message.style.display === 'none' || message.style.display === '') {
-        message.style.display = 'block';
+    // Elements
+    const envFlap = document.getElementById('envFlap');
+    const envFront = document.getElementById('envFront');
+    const envelope = document.getElementById('envelope');
+    const inside = document.getElementById('inside');
+    const openBtn = document.getElementById('openBtn');
+    const sparkHolder = document.getElementById('sparkHolder');
+    const cakeBtn = document.getElementById('cakeBtn');
+    const flame = document.getElementById('flame');
+
+    // initial states
+    gsap.set(envFlap, {rotationX:0, transformOrigin:'top center'});
+    gsap.set(envFront, {z:40});
+    gsap.set(inside, {y:6, z:0});
+
+    let isOpen = false;
+    function openEnvelope(){
+      if(isOpen) return;
+      isOpen = true;
+      // flap rotates up
+      gsap.to(envFlap, {duration:0.9, rotationX:-160, ease:'power3.out'});
+      gsap.to(envFront, {duration:0.8, y:-18, ease:'power2.out'});
+      gsap.fromTo(inside, {opacity:0, y:12},{duration:0.8, opacity:1, y:0, delay:0.45, ease:'power2.out'});
+    }
+    function closeEnvelope(){
+      if(!isOpen) return;
+      isOpen = false;
+      gsap.to(envFlap, {duration:0.6, rotationX:0, ease:'power3.in'});
+      gsap.to(envFront, {duration:0.6, y:0, ease:'power2.in'});
+      gsap.to(inside, {duration:0.4, opacity:0, y:8});
+    }
+
+    // Toggle via button
+    openBtn.addEventListener('click', ()=>{ if(!isOpen) openEnvelope(); else closeEnvelope(); openBtn.textContent = isOpen? 'Close Card' : 'Open Birthday Card'; });
+
+    // Also allow clicking the front to open
+    envFront.addEventListener('click', ()=>{ if(!isOpen) openEnvelope(); else closeEnvelope(); openBtn.textContent = isOpen? 'Close Card' : 'Open Birthday Card'; });
+
+    // Spark generator for paw clicks
+    function spawnSparks(x,y,amount=12){
+      for(let i=0;i<amount;i++){
+        const p = document.createElement('div'); p.className='particle';
+        sparkHolder.appendChild(p);
+        // start position
+        gsap.set(p,{x:x-8,y:y-8,opacity:1,scale:0.6});
+        // fly to random direction
+        const dx = (Math.random()*220)-110; const dy = (Math.random()*-140)-20;
+        gsap.to(p,{duration:0.9+Math.random()*0.5, x:`+=${dx}`, y:`+=${dy}`, scale:1.2, opacity:0, ease:'power2.out', onComplete:()=>p.remove()});
+      }
+    }
+
+    // attach paw click handlers
+    document.querySelectorAll('.cat-btn').forEach(btn=>{
+      btn.addEventListener('click', (e)=>{
+        const r = envelope.getBoundingClientRect();
+        const bx = e.clientX - r.left; const by = e.clientY - r.top;
+        spawnSparks(bx,by,10);
+        // fun bounce
+        gsap.fromTo(btn, {scale:1}, {scale:1.14, duration:0.16, yoyo:true, repeat:1, ease:'power1.out'});
+      });
+    });
+
+    // Candle toggle + flame animation
+    let lit=false; let flameTween=null;
+    cakeBtn.addEventListener('click', ()=>{
+      lit = !lit;
+      if(lit){
+        flame.textContent='🔥';
+        gsap.to(flame,{duration:0.25,opacity:1,scale:1.05});
+        flameTween = gsap.to(flame,{y:-6,rotation:2,scale:1.08,duration:0.6,yoyo:true,repeat:-1,ease:'sine.inOut'});
+        // small spark burst
+        const r = cakeBtn.getBoundingClientRect(); const cx = r.left - envelope.getBoundingClientRect().left + r.width/2; const cy = r.top - envelope.getBoundingClientRect().top + r.height/2;
+        spawnSparks(cx,cy,14);
       } else {
-        message.style.display = 'none';
+        flame.textContent='';
+        gsap.to(flame,{duration:0.2,opacity:0,scale:0.8});
+        if(flameTween) flameTween.kill();
       }
     });
+
+    // Reset button
+    document.getElementById('resetBtn').addEventListener('click', ()=>{
+      closeEnvelope();
+      if(flameTween) flameTween.kill(); flame.textContent=''; lit=false; openBtn.textContent='Open Birthday Card';
+    });
+
+    // small entrances
+    gsap.from('.card',{duration:0.9,y:24,opacity:0,ease:'power3.out'});
   </script>
 </body>
 </html>
