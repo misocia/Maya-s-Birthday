@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Maya!</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #c8a2c8, #1a1a1a);
+      color: white;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    header {
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      border-bottom: 2px solid white;
+    }
+    h1 {
+      font-size: 2.8em;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    p.message {
+      font-size: 1.2em;
+      color: #f0e6ff;
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    img {
+      width: 300px;
+      border-radius: 20px;
+      border: 3px solid #fff;
+      box-shadow: 0 0 20px #c8a2c8;
+      margin-top: 20px;
+    }
+    .cat {
+      font-size: 60px;
+      animation: bounce 1.5s infinite;
+      display: inline-block;
+      margin: 10px;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    footer {
+      margin-top: 40px;
+      padding: 10px;
+      font-size: 0.9em;
+      color: #e6d7ff;
+    }
+    .container {
+      padding: 20px;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(200, 162, 200, 0.5);
+      display: inline-block;
+      max-width: 700px;
+      position: relative;
+    }
+    .cake-icon {
+      font-size: 80px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .cake-icon:hover {
+      transform: scale(1.1);
+    }
+    .hidden-message {
+      display: none;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 20px;
+      border-radius: 15px;
+      margin-top: 20px;
+      font-size: 1.1em;
+      color: #f0e6ff;
+      animation: fadeIn 1s ease forwards;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎉 Happy Birthday Maya! 🎂</h1>
+  </header>
+  <div class="container">
+    <div class="card">
+      <p class="message">
+        Maya, selamat ulang tahun ya! 🌸 Semoga di umurmu yang sekarang kamu semakin dewasa dan semakin mencintai dirimu sendiri. <br><br>
+        Hari ini adalah hari spesial karena seorang anak cantik lahir ke dunia. 💜<br><br>
+        Kamu berharga, aku dan Nesha menyayangimu. Tetaplah hidup dan bahagia — aku selalu bangga padamu. 💫
+      </p>
+      <img src="WhatsApp Image 2025-10-26 at 16.33.46.jpeg" alt="Maya's Picture">
+      <div>
+        <span class="cat">🐾</span>
+        <span class="cat">🐱</span>
+        <span class="cat">😺</span>
+      </div>
+      <div style="margin-top:30px;">
+        <span class="cake-icon" id="cake">🎂</span>
+        <div class="hidden-message" id="birthdayMessage">
+          🎈 Surprise! 🎈<br>
+          Maya, semoga harimu penuh tawa, cinta, dan kucing lucu! 😻<br>
+          Kamu pantas mendapatkan semua hal indah di dunia ini! 💜
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    Made with love by your friends 💜
+  </footer>
+
+  <script>
+    const cake = document.getElementById('cake');
+    const message = document.getElementById('birthdayMessage');
+    cake.addEventListener('click', () => {
+      if (message.style.display === 'none' || message.style.display === '') {
+        message.style.display = 'block';
+      } else {
+        message.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
