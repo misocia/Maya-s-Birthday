@@ -55,6 +55,16 @@
       line-height: 1.6;
     }
 
+    .photo {
+      display: none;
+      margin-top: 25px;
+      border-radius: 15px;
+      width: 250px;
+      height: auto;
+      animation: fadeIn 2s ease-in-out;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
@@ -72,6 +82,8 @@
 
   <button onclick="showMessage()">💌 Click to open your card</button>
 
+  <img src="WhatsApp Image 2025-10-26 at 16.33.46.jpeg" alt="Maya's Picture" class="photo" id="photo">
+
   <div class="message" id="message">
     Maya, happy birthday 💜<br><br>
     I hope this year brings you more wisdom<br>
@@ -85,6 +97,7 @@
   <script>
     function showMessage() {
       document.getElementById("message").style.display = "block";
+      document.getElementById("photo").style.display = "block";
     }
   </script>
 </body>
