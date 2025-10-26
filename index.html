@@ -45,24 +45,25 @@
       background-color: #9d3dd3;
     }
 
-    .message {
+    .message, .photo {
       display: none;
-      margin-top: 25px;
-      font-size: 1.1em;
-      color: #3c2a4d;
-      max-width: 500px;
       animation: fadeIn 1.5s ease-in-out;
-      line-height: 1.6;
     }
 
     .photo {
-      display: none;
       margin-top: 25px;
       border-radius: 15px;
       width: 250px;
       height: auto;
-      animation: fadeIn 2s ease-in-out;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .message {
+      margin-top: 25px;
+      font-size: 1.1em;
+      color: #3c2a4d;
+      max-width: 500px;
+      line-height: 1.6;
     }
 
     @keyframes fadeIn {
@@ -80,7 +81,7 @@
   <h1>Happy Birthday, Maya 💜</h1>
   <div class="emoji">🐾🐱</div>
 
-  <button onclick="showMessage()">💌 Click to open your card</button>
+  <button id="toggleBtn" onclick="toggleCard()">💌 Click to open your card</button>
 
   <img src="WhatsApp Image 2025-10-26 at 16.33.46.jpeg" alt="Maya's Picture" class="photo" id="photo">
 
@@ -91,14 +92,3 @@
     Today is special — a beautiful soul was born into the world.<br><br>
     Maya, you are precious.<br>
     Nesha and I love you so much.<br>
-    Keep living, keep smiling — I’m always proud of you 💐
-  </div>
-
-  <script>
-    function showMessage() {
-      document.getElementById("message").style.display = "block";
-      document.getElementById("photo").style.display = "block";
-    }
-  </script>
-</body>
-</html>
