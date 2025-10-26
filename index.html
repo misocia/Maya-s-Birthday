@@ -15,6 +15,7 @@
       height: 100vh;
       margin: 0;
       text-align: center;
+      overflow: hidden;
     }
 
     h1 {
@@ -38,16 +39,26 @@
       border-radius: 25px;
       font-size: 1em;
       cursor: pointer;
-      transition: 0.3s;
+      transition: all 0.3s;
     }
 
     button:hover {
       background-color: #9d3dd3;
+      transform: scale(1.05);
     }
 
-    .message, .photo {
+    .card {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.7s ease;
       display: none;
-      animation: fadeIn 1.5s ease-in-out;
+      text-align: center;
+    }
+
+    .card.show {
+      opacity: 1;
+      transform: translateY(0);
+      display: block;
     }
 
     .photo {
@@ -64,6 +75,10 @@
       color: #3c2a4d;
       max-width: 500px;
       line-height: 1.6;
+      background: #ffffffb7;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
     }
 
     @keyframes fadeIn {
@@ -83,12 +98,42 @@
 
   <button id="toggleBtn" onclick="toggleCard()">💌 Click to open your card</button>
 
-  <img src="WhatsApp Image 2025-10-26 at 16.33.46.jpeg" alt="Maya's Picture" class="photo" id="photo">
+  <div class="card" id="card">
+    <img src="WhatsApp Image 2025-10-26 at 16.33.46.jpeg" alt="Maya's Picture" class="photo">
+    <div class="message">
+      Maya, happy birthday 💜<br><br>
+      I hope this year brings you more wisdom<br>
+      and helps you love yourself even more.<br>
+      Today is special — a beautiful soul was born into the world.<br><br>
+      Maya, you are precious.<br>
+      Nesha and I love you so much.<br>
+      Keep living, keep smiling — I’m always proud of you 💐
+    </div>
+  </div>
 
-  <div class="message" id="message">
-    Maya, happy birthday 💜<br><br>
-    I hope this year brings you more wisdom<br>
-    and helps you love yourself even more.<br>
-    Today is special — a beautiful soul was born into the world.<br><br>
-    Maya, you are precious.<br>
-    Nesha and I love you so much.<br>
+  <script>
+    let isOpen = false;
+
+    function toggleCard() {
+      const card = document.getElementById("card");
+      const button = document.getElementById("toggleBtn");
+
+      if (!isOpen) {
+        card.classList.add("show");
+        button.textContent = "💌 Close the card";
+        isOpen = true;
+      } else {
+        card.classList.remove("show");
+        setTimeout(() => { card.style.display = "none"; }, 600);
+        button.textContent = "💌 Click to open your card";
+        isOpen = false;
+      }
+
+      // Biar card muncul/hilang dengan benar
+      if (card.style.display === "none" || card.style.display === "") {
+        card.style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>
