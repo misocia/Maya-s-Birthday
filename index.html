@@ -1,174 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday, Maya 🎂</title>
-<style>
-  body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background-color: white;
-    color: black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    overflow: hidden;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday, Maya 💜</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #f9f6ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      overflow: hidden;
+    }
 
-  h1 {
-    font-size: 2.2em;
-    color: #6a0dad;
-    margin-bottom: 10px;
-  }
+    h1 {
+      color: #6a0dad;
+      font-size: 2em;
+      margin-bottom: 10px;
+      animation: fadeIn 2s ease-in-out;
+    }
 
-  .cake {
-    position: relative;
-    width: 100px;
-    height: 80px;
-    background: #333;
-    border-radius: 10px;
-    margin-bottom: 20px;
-  }
+    .cat {
+      font-size: 60px;
+      animation: float 3s ease-in-out infinite;
+    }
 
-  .flame {
-    position: absolute;
-    top: -25px;
-    left: 50%;
-    width: 12px;
-    height: 25px;
-    background: radial-gradient(circle, gold, orange);
-    border-radius: 50%;
-    transform: translateX(-50%);
-    animation: flicker 0.3s infinite alternate;
-  }
+    .button {
+      margin-top: 30px;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 25px;
+      background-color: #6a0dad;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      animation: fadeIn 3s ease-in-out;
+    }
 
-  @keyframes flicker {
-    0% { transform: translateX(-50%) scaleY(1); opacity: 1; }
-    100% { transform: translateX(-50%) scaleY(1.3); opacity: 0.8; }
-  }
+    .button:hover {
+      background-color: #8b48d7;
+    }
 
-  .paw {
-    cursor: pointer;
-    font-size: 40px;
-    user-select: none;
-    position: relative;
-  }
+    .message {
+      display: none;
+      margin-top: 20px;
+      font-size: 1.1em;
+      color: #333;
+      max-width: 500px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
 
-  .spark {
-    position: absolute;
-    font-size: 14px;
-    color: #c8a2c8;
-    animation: rise 1s ease-out forwards;
-  }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-  @keyframes rise {
-    0% { opacity: 1; transform: translateY(0); }
-    100% { opacity: 0; transform: translateY(-50px); }
-  }
-
-  .card {
-    position: relative;
-    width: 300px;
-    height: 200px;
-    background: #f5e9f7;
-    border: 2px solid #000;
-    border-radius: 10px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 1s;
-    transform-origin: bottom;
-  }
-
-  .card.open {
-    transform: rotateX(180deg);
-  }
-
-  .card-inner {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-  }
-
-  .front {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    background: white;
-  }
-
-  .back {
-    transform: rotateX(180deg);
-    background: white;
-    padding: 10px;
-    text-align: center;
-  }
-
-  .back img {
-    width: 80px;
-    height: 80px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    object-fit: cover;
-  }
-
-  .message {
-    font-size: 14px;
-    line-height: 1.5;
-  }
-
-</style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
 </head>
 <body>
-
   <h1>Happy Birthday, Maya 💜</h1>
+  <div class="cat">🐾🐱</div>
 
-  <div class="cake">
-    <div class="flame"></div>
-  </div>
-
-  <div class="paw">🐾</div>
-
-  <div class="card" id="card">
-    <div class="card-inner front">
-      🎁 Click to open your card 💌
-    </div>
-    <div class="card-inner back">
-      <img src="WhatsApp Image 2025-10-26 at 16.33.46.jpeg" alt="Maya">
-      <div class="message">
-        <strong>Happy Birthday, Maya 💜</strong><br>
-        You’re growing beautifully, learning to love yourself more every day.<br>
-        You’re precious, and we — me and Nesha — love you so much.<br>
-        Keep shining, and stay happy always.
-      </div>
-    </div>
-  </div>
-
-<script>
-  // Flip card
-  const card = document.getElementById('card');
-  card.addEventListener('click', () => {
-    card.classList.toggle('open');
-  });
-
-  // Paw sparks
-  const paw = document.querySelector('.paw');
-  paw.addEventListener('click', (e) => {
-    for (let i = 0; i < 6; i++) {
-      const spark = document.createElement('span');
-      spark.classList.add('spark');
-      spark.innerHTML = '✨';
-      spark.style.left = (Math.random() * 40 - 20) + 'px';
-      spark.style.top = (Math.random() * -10 - 10) + 'px';
-      paw.appendChild(spark);
-      setTimeout(() => spark.remove(), 1000);
-    }
-  });
-</script>
-
-</body>
-</html>
+  <bu
