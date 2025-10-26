@@ -22,7 +22,7 @@
     /* Saat kartu dibuka */
     body.opened {
       justify-content: flex-start;
-      align-items: flex-start;
+      align-items: center;
       height: auto;
       overflow-y: auto;
       padding: 40px 0;
@@ -64,6 +64,8 @@
       display: none;
       text-align: center;
       width: 100%;
+      max-width: 600px;
+      margin-top: 30px;
     }
 
     .card.show {
@@ -81,15 +83,16 @@
     }
 
     .message {
-      margin-top: 25px;
+      margin: 25px auto;
       font-size: 1.1em;
       color: #3c2a4d;
-      max-width: 500px;
+      max-width: 450px;
       line-height: 1.6;
       background: #ffffffb7;
       border-radius: 15px;
       padding: 20px;
       box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      text-align: center;
     }
 
     @keyframes fadeIn {
@@ -104,21 +107,23 @@
   </style>
 </head>
 <body>
-  <h1>Happy Birthday, Maya 💜</h1>
-  <div class="emoji">🐾🐱</div>
+  <div class="container">
+    <h1>Happy Birthday, Maya 💜</h1>
+    <div class="emoji">🐾🐱</div>
 
-  <button id="toggleBtn" onclick="toggleCard()">💌 Click to open your card</button>
+    <button id="toggleBtn" onclick="toggleCard()">💌 Click to open your card</button>
 
-  <div class="card" id="card">
-    <img src="WhatsApp Image 2025-10-26 at 16.33.46.jpeg" alt="Maya's Picture" class="photo">
-    <div class="message">
-      Maya, happy birthday 💜<br><br>
-      I hope this year brings you more wisdom<br>
-      and helps you love yourself even more.<br>
-      Today is special — a beautiful soul was born into the world.<br><br>
-      Maya, you are precious.<br>
-      Nesha and I love you so much.<br>
-      Keep living, keep smiling — I’m always proud of you 💐
+    <div class="card" id="card">
+      <img src="b0df236a-722c-4223-a7a3-958cacca8cd4.png" alt="Maya's Picture" class="photo">
+      <div class="message">
+        Maya, happy birthday 💜<br><br>
+        I hope this year brings you more wisdom<br>
+        and helps you love yourself even more.<br>
+        Today is special — a beautiful soul was born into the world.<br><br>
+        Maya, you are precious.<br>
+        Nesha and I love you so much.<br>
+        Keep living, keep smiling — I’m always proud of you 💐
+      </div>
     </div>
   </div>
 
@@ -141,12 +146,14 @@
         button.textContent = "💌 Click to open your card";
         window.scrollTo({ top: 0, behavior: 'smooth' });
         isOpen = false;
+
+        setTimeout(() => {
+          if (!isOpen) card.style.display = "none";
+        }, 500);
       }
 
       if (card.style.display === "none" || card.style.display === "") {
         card.style.display = "block";
-      } else if (!isOpen) {
-        setTimeout(() => { card.style.display = "none"; }, 500);
       }
     }
   </script>
