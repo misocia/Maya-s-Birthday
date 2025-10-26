@@ -7,26 +7,26 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #c8a2c8, #1a1a1a);
-      color: white;
+      background-color: #ffffff;
+      color: #000000;
       text-align: center;
       margin: 0;
       padding: 0;
       overflow-x: hidden;
     }
     header {
-      background-color: rgba(0, 0, 0, 0.3);
+      background-color: #f4f4f4;
       padding: 20px;
-      border-bottom: 2px solid white;
+      border-bottom: 2px solid #000;
     }
     h1 {
       font-size: 2.8em;
-      color: #fff;
+      color: #000;
       margin-bottom: 10px;
     }
     p.message {
       font-size: 1.2em;
-      color: #f0e6ff;
+      color: #333;
       margin-bottom: 40px;
       max-width: 600px;
       margin-left: auto;
@@ -35,34 +35,39 @@
     img {
       width: 300px;
       border-radius: 20px;
-      border: 3px solid #fff;
-      box-shadow: 0 0 20px #c8a2c8;
+      border: 3px solid #000;
+      box-shadow: 0 0 15px #d8b7e3;
       margin-top: 20px;
     }
     .cat {
       font-size: 60px;
-      animation: bounce 1.5s infinite;
+      color: #000000;
       display: inline-block;
       margin: 10px;
+      position: relative;
     }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+    .cat::after {
+      content: '🐾';
+      position: absolute;
+      bottom: -10px;
+      left: 15px;
+      font-size: 25px;
+      color: #c8a2c8;
     }
     footer {
       margin-top: 40px;
       padding: 10px;
       font-size: 0.9em;
-      color: #e6d7ff;
+      color: #333;
     }
     .container {
       padding: 20px;
     }
     .card {
-      background: rgba(255, 255, 255, 0.1);
+      background: #fff;
       border-radius: 20px;
       padding: 30px;
-      box-shadow: 0 0 20px rgba(200, 162, 200, 0.5);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
       display: inline-block;
       max-width: 700px;
       position: relative;
@@ -77,13 +82,14 @@
     }
     .hidden-message {
       display: none;
-      background: rgba(255, 255, 255, 0.15);
+      background: #f8f8f8;
       padding: 20px;
       border-radius: 15px;
       margin-top: 20px;
       font-size: 1.1em;
-      color: #f0e6ff;
+      color: #000;
       animation: fadeIn 1s ease forwards;
+      border: 2px solid #c8a2c8;
     }
     @keyframes fadeIn {
       from {opacity: 0; transform: translateY(10px);}
@@ -98,22 +104,22 @@
   <div class="container">
     <div class="card">
       <p class="message">
-        Maya, selamat ulang tahun ya! 🌸 Semoga di umurmu yang sekarang kamu semakin dewasa dan semakin mencintai dirimu sendiri. <br><br>
-        Hari ini adalah hari spesial karena seorang anak cantik lahir ke dunia. 💜<br><br>
-        Kamu berharga, aku dan Nesha menyayangimu. Tetaplah hidup dan bahagia — aku selalu bangga padamu. 💫
+        Maya, happy birthday! 🌸 I hope this year brings you more wisdom, self-love, and endless happiness. <br><br>
+        Today is a special day because a beautiful soul was born into this world. 💜<br><br>
+        You are precious, and we — me and Nesha — love you so much. Keep living, keep smiling, and know that I’m always proud of you. 💫
       </p>
       <img src="WhatsApp Image 2025-10-26 at 16.33.46.jpeg" alt="Maya's Picture">
       <div>
-        <span class="cat">🐾</span>
         <span class="cat">🐱</span>
+        <span class="cat">🐈</span>
         <span class="cat">😺</span>
       </div>
       <div style="margin-top:30px;">
         <span class="cake-icon" id="cake">🎂</span>
         <div class="hidden-message" id="birthdayMessage">
           🎈 Surprise! 🎈<br>
-          Maya, semoga harimu penuh tawa, cinta, dan kucing lucu! 😻<br>
-          Kamu pantas mendapatkan semua hal indah di dunia ini! 💜
+          Maya, may your day be filled with laughter, love, and cute cats! 😻<br>
+          You deserve all the beautiful things this world has to offer! 💜
         </div>
       </div>
     </div>
